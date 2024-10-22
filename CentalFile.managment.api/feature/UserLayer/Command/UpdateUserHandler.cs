@@ -17,7 +17,7 @@ namespace CentalFile.managment.api.feature.UserLayer.Command
 
         public async Task<UserDto> Handle(UpdateUserRequest request, CancellationToken cancellationToken)
         {
-            DtaAcces.Models.ApplicationUser? existingUser = await queryUserRepository.GetByIdAsync(request.Id);
+            DtaAcces.Models.User? existingUser = await queryUserRepository.GetByIdAsync(request.Id);
             if (existingUser == null)
             {
                 throw new UserNotFoundException($"User with ID {request.Id} not found.");

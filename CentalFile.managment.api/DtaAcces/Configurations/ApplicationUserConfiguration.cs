@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CentalFile.managment.api.DtaAcces.Configurations
 {
-    public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
+    public class ApplicationUserConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.Property(u => u.Id)
                 .HasConversion(id => id.Value, value => (UserId)value)

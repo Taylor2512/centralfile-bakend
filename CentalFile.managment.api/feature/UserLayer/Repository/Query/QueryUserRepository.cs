@@ -5,7 +5,7 @@ using CentalFile.managment.api.feature.UserLayer.Repository.Query.Interfaz;
 
 namespace CentalFile.managment.api.feature.UserLayer.Repository.Query
 {
-    public class QueryUserRepository : RepositoryRead<ApplicationUser>, IQueryUserRepository
+    public class QueryUserRepository : RepositoryRead<User>, IQueryUserRepository
     {
         public QueryUserRepository(ApplicationDbContext context) : base(context)
         {

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace CentalFile.managment.api.DtaAcces.Models
 {
-    public class ApplicationUser : IdentityUser<UserId>
+    public class User : IdentityUser<UserId>
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

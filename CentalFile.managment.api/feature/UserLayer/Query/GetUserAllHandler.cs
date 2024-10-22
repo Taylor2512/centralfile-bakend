@@ -12,7 +12,7 @@ namespace CentalFile.managment.api.feature.UserLayer.Query
     {
         public async Task<IEnumerable<UserDto>> Handle(GetUserAllRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<DtaAcces.Models.ApplicationUser> users = await queryUserRepository.GetAllAsync();
+            IEnumerable<DtaAcces.Models.User> users = await queryUserRepository.GetAllAsync();
             return mapper.Map<IEnumerable<UserDto>>(users);
         }
     }

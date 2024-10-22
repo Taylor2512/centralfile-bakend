@@ -12,14 +12,24 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 
 // Configura DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Configura Identity
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+builder.Services.AddIdentity<User, ApplicationRole>(options =>
 {
+    options.SignIn.RequireConfirmedEmail = true;
     options.Password.RequireDigit = true;
     options.Password.RequiredLength = 6;
     options.Password.RequireNonAlphanumeric = false;
@@ -59,6 +69,7 @@ builder.Services.AddControllers();
 builder.Services.ConfigureServices();
 
 WebApplication app = builder.Build();
+app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
 {

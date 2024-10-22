@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CentalFile.managment.api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241021184554_first-migration")]
-    partial class firstmigration
+    [Migration("20241022053602_add-seed-company")]
+    partial class addseedcompany
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,15 +62,15 @@ namespace CentalFile.managment.api.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("CompanyId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ContactId")
-                        .HasColumnType("int");
+                    b.Property<long?>("ContactId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -140,11 +140,14 @@ namespace CentalFile.managment.api.Migrations
 
             modelBuilder.Entity("CentalFile.managment.api.DtaAcces.Models.Company", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Identificaction")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("IdentificationType")
                         .IsRequired()
@@ -156,23 +159,34 @@ namespace CentalFile.managment.api.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("TaxId")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6ba5217d-a12d-4d70-a42c-8a64c3f509eb"),
+                            Identificaction = "123456789",
+                            IdentificationType = "NIT",
+                            Name = "centralfile"
+                        },
+                        new
+                        {
+                            Id = new Guid("9f97249c-be60-4d4d-b31b-ede77f24db4d"),
+                            Identificaction = "987654321",
+                            IdentificationType = "NIT",
+                            Name = "Company 2"
+                        });
                 });
 
             modelBuilder.Entity("CentalFile.managment.api.DtaAcces.Models.Contact", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -314,11 +328,11 @@ namespace CentalFile.managment.api.Migrations
 
             modelBuilder.Entity("CompanyContact", b =>
                 {
-                    b.Property<int>("CompaniesId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CompaniesId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ContactsId")
-                        .HasColumnType("int");
+                    b.Property<long>("ContactsId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("CompaniesId", "ContactsId");
 

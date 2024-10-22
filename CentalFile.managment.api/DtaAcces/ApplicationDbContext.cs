@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CentalFile.managment.api.DtaAcces
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, UserId, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
+    public class ApplicationDbContext : IdentityDbContext<User, ApplicationRole, UserId, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -25,7 +25,7 @@ namespace CentalFile.managment.api.DtaAcces
             modelBuilder.ApplyConfiguration(new ContactConfiguration());
             modelBuilder.ApplyConfiguration(new ApplicationRoleConfiguration()); // Agrega esta línea
 
-            modelBuilder.Entity<ApplicationUser>(b =>
+            modelBuilder.Entity<User>(b =>
             {
                 b.HasKey(u => u.Id);
                 b.HasMany(u => u.Contacts).WithOne(c => c.User).HasForeignKey(c => c.UserId);

@@ -12,7 +12,7 @@ using CentalFile.managment.api.feature.UserLayer.Repository.Command;
 using CentalFile.managment.api.feature.UserLayer.Repository.Command.Interfaces;
 using CentalFile.managment.api.feature.UserLayer.Repository.Query;
 using CentalFile.managment.api.feature.UserLayer.Repository.Query.Interfaz;
-
+using CentalFile.managment.api.Services;
 using System.Reflection;
 
 namespace CentalFile.managment.api.Configuration
@@ -28,6 +28,7 @@ namespace CentalFile.managment.api.Configuration
             services.AddScoped<ICommandCompanyRepository, CommandCompanyRepository>();
             services.AddScoped<IQueryUserRepository, QueryUserRepository>();
             services.AddScoped<IQueryContactRepository, QueryContactRepository>();
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IQueryCompanyRepository, QueryCompanyRepository>();
             services.AddScoped(typeof(IRepositoryRed<>), typeof(RepositoryRead<>));
             services.AddScoped(typeof(IRepositoryWrite<>), typeof(RepositoryWrite<>));

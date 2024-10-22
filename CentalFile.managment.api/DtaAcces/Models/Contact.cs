@@ -11,9 +11,9 @@ namespace CentalFile.managment.api.DtaAcces.Models
         public required string MobileNumber { get; set; }
         public required string PhotoUrl { get; set; }
         public UserId? UserId { get; set; }
-        public ApplicationUser? User { get; set; }
+        public User? User { get; set; }
         public ICollection<Company> Companies { get; set; } = [];
-        public ICollection<ApplicationUser> SharedWithUsers { get; set; } = [];
+        public ICollection<User> SharedWithUsers { get; set; } = [];
 
     }
 }

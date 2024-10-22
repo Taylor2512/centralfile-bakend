@@ -8,14 +8,17 @@ namespace CentalFile.managment.api.DtaAcces.StronglyTypedIDs
     [TypeConverter(typeof(CompanyIdTypeConverter))]
     [JsonConverter(typeof(StronglyTypedIdJsonConverter<CompanyId>))]
 
-    public sealed record CompanyId(int Value)
+    public sealed record CompanyId(Guid Value)
     {
-        public static implicit operator int(CompanyId contactId)
+        public CompanyId() : this(Guid.NewGuid())
+        {
+        }
+        public static implicit operator Guid(CompanyId contactId)
         {
             return contactId.Value;
         }
 
-        public static implicit operator CompanyId(int value)
+        public static implicit operator CompanyId(Guid value)
         {
             return new(value);
         }
@@ -27,7 +30,7 @@ namespace CentalFile.managment.api.DtaAcces.StronglyTypedIDs
 
         public static implicit operator CompanyId(string value)
         {
-            return new(int.Parse(value));
+            return new(Guid.Parse(value));
         }
     }
     public class CompanyIdTypeConverter : TypeConverter
@@ -39,7 +42,7 @@ namespace CentalFile.managment.api.DtaAcces.StronglyTypedIDs
 
         public override object? ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
-            return value is string strValue ? new CompanyId(int.Parse(strValue)) : base.ConvertFrom(context, culture, value);
+            return value is string strValue ? new CompanyId(Guid.Parse(strValue)) : base.ConvertFrom(context, culture, value);
         }
     }
 }

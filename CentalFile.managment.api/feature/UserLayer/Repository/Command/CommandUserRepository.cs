@@ -5,7 +5,7 @@ using CentalFile.managment.api.feature.UserLayer.Repository.Command.Interfaces;
 
 namespace CentalFile.managment.api.feature.UserLayer.Repository.Command
 {
-    public class CommandUserRepository : RepositoryWrite<ApplicationUser>, ICommandUserRepository
+    public class CommandUserRepository : RepositoryWrite<User>, ICommandUserRepository
     {
         public CommandUserRepository(ApplicationDbContext context) : base(context)
         {

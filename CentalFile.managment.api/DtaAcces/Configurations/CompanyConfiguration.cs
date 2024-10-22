@@ -1,4 +1,5 @@
-﻿using CentalFile.managment.api.DtaAcces.Models;
+﻿using CentalFile.managment.api.DtaAcces.Configurations.Seeder;
+using CentalFile.managment.api.DtaAcces.Models;
 using CentalFile.managment.api.DtaAcces.StronglyTypedIDs;
 
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,7 @@ namespace CentalFile.managment.api.DtaAcces.Configurations
                 .IsRequired()
                 .HasMaxLength(100);
 
-            builder.Property(c => c.TaxId)
+            builder.Property(c => c.Identificaction)
                 .IsRequired()
                 .HasMaxLength(50);
 
@@ -34,6 +35,7 @@ namespace CentalFile.managment.api.DtaAcces.Configurations
                 .WithOne(u => u.Company)
                 .HasForeignKey(u => u.CompanyId)
                 .OnDelete(DeleteBehavior.Restrict);
+            builder.SeederCompany();
         }
     }
 }

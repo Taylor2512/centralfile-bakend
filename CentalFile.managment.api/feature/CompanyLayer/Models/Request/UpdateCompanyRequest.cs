@@ -9,7 +9,8 @@ namespace CentalFile.managment.api.feature.CompanyLayer.Models.Request
     {
         public CompanyId? Id { get; private set; }
         public required string Name { get; set; }
-        public required string TaxId { get; set; }
+        public required string Identificaction { get; set; }
+
         public required string IdentificationType { get; set; }
         public void SetCompanyId(CompanyId id)
         {

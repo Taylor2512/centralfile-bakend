@@ -4,6 +4,7 @@ using CentalFile.managment.api.DtaAcces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CentalFile.managment.api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241022053259_inicializate-migration")]
+    partial class inicializatemigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,22 +162,6 @@ namespace CentalFile.managment.api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("6ba5217d-a12d-4d70-a42c-8a64c3f509eb"),
-                            Identificaction = "123456789",
-                            IdentificationType = "NIT",
-                            Name = "centralfile"
-                        },
-                        new
-                        {
-                            Id = new Guid("9f97249c-be60-4d4d-b31b-ede77f24db4d"),
-                            Identificaction = "987654321",
-                            IdentificationType = "NIT",
-                            Name = "Company 2"
-                        });
                 });
 
             modelBuilder.Entity("CentalFile.managment.api.DtaAcces.Models.Contact", b =>

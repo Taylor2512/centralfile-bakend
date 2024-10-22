@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace CentalFile.managment.api.Migrations
 {
     /// <inheritdoc />
-    public partial class firstmigration : Migration
+    public partial class inicializatemigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,10 +29,9 @@ namespace CentalFile.managment.api.Migrations
                 name: "Companies",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    TaxId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Identificaction = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     IdentificationType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -114,9 +114,9 @@ namespace CentalFile.managment.api.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CompanyId = table.Column<int>(type: "int", nullable: true),
+                    CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     RememberMe = table.Column<bool>(type: "bit", nullable: false),
-                    ContactId = table.Column<int>(type: "int", nullable: true),
+                    ContactId = table.Column<long>(type: "bigint", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -167,7 +167,7 @@ namespace CentalFile.managment.api.Migrations
                 name: "Contacts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -191,8 +191,8 @@ namespace CentalFile.managment.api.Migrations
                 name: "CompanyContact",
                 columns: table => new
                 {
-                    CompaniesId = table.Column<int>(type: "int", nullable: false),
-                    ContactsId = table.Column<int>(type: "int", nullable: false)
+                    CompaniesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ContactsId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {

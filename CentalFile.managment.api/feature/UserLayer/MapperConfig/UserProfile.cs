@@ -10,11 +10,11 @@ namespace CentalFile.managment.api.feature.UserLayer.MapperConfig
     {
         public UserProfile()
         {
-            CreateMap<ApplicationUser, UserDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
             CreateMap<CreateUserRequest, UserDto>().ReverseMap();
             CreateMap<UpdateUserRequest, UserDto>().ReverseMap();
-            CreateMap<CreateUserRequest, ApplicationUser>().ReverseMap();
-            CreateMap<UpdateUserRequest, ApplicationUser>().ReverseMap();
+            CreateMap<CreateUserRequest, User>().ReverseMap();
+            CreateMap<UpdateUserRequest, User>().ReverseMap();
         }
     }
 }

@@ -4,9 +4,10 @@ namespace CentalFile.managment.api.feature.CompanyLayer.Models.Dtos
 {
     public class CompanyDto
     {
-        public required CompanyId Id { get; set; }
-        public required string Name { get; set; }
-        public required string TaxId { get; set; }
-        public required string IdentificationType { get; set; }
+        public  CompanyId? Id { get; set; }
+        public  string? Name { get; set; }
+        public  string? Identificaction { get; set; }
+        public  string? IdentificationType { get; set; }
+
     }
 }

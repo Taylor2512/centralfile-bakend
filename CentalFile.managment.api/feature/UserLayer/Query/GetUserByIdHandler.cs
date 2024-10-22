@@ -13,7 +13,7 @@ namespace CentalFile.managment.api.feature.UserLayer.Query
     {
         public async Task<UserDto> Handle(GetUserByIdRequest request, CancellationToken cancellationToken)
         {
-            DtaAcces.Models.ApplicationUser? user = await queryUserRepository.GetByIdAsync(request.Id);
+            DtaAcces.Models.User? user = await queryUserRepository.GetByIdAsync(request.Id);
             return user == null ? throw new UserNotFoundException($"User with ID {request.Id} not found.") : mapper.Map<UserDto>(user);
         }
     }

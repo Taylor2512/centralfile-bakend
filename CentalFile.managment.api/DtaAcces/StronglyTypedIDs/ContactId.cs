@@ -8,14 +8,15 @@ namespace CentalFile.managment.api.DtaAcces.StronglyTypedIDs
     [TypeConverter(typeof(ContactIdTypeConverter))]
     [JsonConverter(typeof(StronglyTypedIdJsonConverter<ContactId>))]
 
-    public sealed record ContactId(int Value)
+    public sealed record ContactId(long Value)
     {
-        public static implicit operator int(ContactId contactId)
+   
+        public static implicit operator long(ContactId contactId)
         {
             return contactId.Value;
         }
 
-        public static implicit operator ContactId(int value)
+        public static implicit operator ContactId(long value)
         {
             return new(value);
         }
@@ -27,7 +28,7 @@ namespace CentalFile.managment.api.DtaAcces.StronglyTypedIDs
 
         public static implicit operator ContactId(string value)
         {
-            return new(int.Parse(value));
+            return new(long.Parse(value));
         }
     }
     public class ContactIdTypeConverter : TypeConverter
