@@ -1,0 +1,13 @@
+# Archivos y carpetas de Visual Studio
+.vs/
+
+# Archivos de compilación
+bin/
+obj/
+
+# Archivos temporales
+*.tmp
+*.log
+
+# Otros archivos
+.dockerignore

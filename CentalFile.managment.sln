@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentalFile.managment.api", "CentalFile.managment.api\CentalFile.managment.api.csproj", "{A9D5C84A-4917-483A-9B9F-22328352064E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9D5C84A-4917-483A-9B9F-22328352064E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D5C84A-4917-483A-9B9F-22328352064E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D5C84A-4917-483A-9B9F-22328352064E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D5C84A-4917-483A-9B9F-22328352064E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F21D6FF3-D0B8-4DE1-B33F-091ED41AFD49}
+	EndGlobalSection
+EndGlobal
